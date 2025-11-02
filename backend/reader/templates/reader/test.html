@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API测试</title>
+</head>
+<body>
+    <h1>API测试页面</h1>
+    <button onclick="testSaveProgress()">测试保存进度</button>
+    <button onclick="testSaveHighlight()">测试保存高亮</button>
+    <button onclick="testGenerateMindmap()">测试生成思维导图</button>
+
+    <script>
+        function testSaveProgress() {
+            fetch('/api/save-progress/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pdf_file: 'test.pdf',
+                    page_number: 1
+                })
+            }).then(response => response.json())
+              .then(data => alert(JSON.stringify(data)));
+        }
+
+        function testSaveHighlight() {
+            fetch('/api/save-highlight/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pdf_file: 'test.pdf',
+                    page_number: 1,
+                    text: '测试文本',
+                    type: '1'
+                })
+            }).then(response => response.json())
+              .then(data => alert(JSON.stringify(data)));
+        }
+
+        function testGenerateMindmap() {
+            fetch('/api/generate-mindmap/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({})
+            }).then(response => response.json())
+              .then(data => alert(JSON.stringify(data)));
+        }
+    </script>
+</body>
+</html>
