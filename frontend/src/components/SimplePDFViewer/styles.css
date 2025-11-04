@@ -13,6 +13,32 @@
   align-items: center;
 }
 
+.content-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.page-container {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-overlay {
+  position: absolute;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* 确保文本层在高亮层上方可见 */
+.react-pdf__Page__textContent {
+  z-index: 2;
+}
+
+.pdf-container {
+  position: relative;
+}
+
 .pdf-container {
   flex: 1;
   overflow: auto;
@@ -20,6 +46,35 @@
   display: flex;
   justify-content: center;
   background-color: #e0e0e0;
+}
+
+.annotations-panel {
+  width: 300px;
+  background-color: #f8f8f8;
+  padding: 1rem;
+  overflow-y: auto;
+  border-left: 1px solid #ddd;
+}
+
+.annotation-item {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.annotation-item:hover {
+  background-color: #f0f0f0;
+}
+
+.annotation-item p {
+  margin: 0 0 0.5rem 0;
+}
+
+.annotation-item span {
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .upload-hint {
